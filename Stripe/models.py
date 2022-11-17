@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Item(models.Model):
@@ -8,3 +9,5 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+    def return_link(self):
+        return reverse('create-checkout-session', args=[self.pk])
