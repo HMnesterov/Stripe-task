@@ -117,6 +117,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DOMAIN = '127.0.0.1:8000'
+DOMAIN = "http://127.0.0.1:8000"
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51LhZx4Hs1Ric6ZgWX3zjoVkdGnk4KuVRwXENGxukXbABDzsjwNWxsImAelnhQkqiC8v2piyGatTNw7P4LKl1aHzt00FdiHt8bu'
 STRIPE_SECRET_KEY = 'sk_test_51LhZx4Hs1Ric6ZgWI9srsyhXZDBdD0syCfgC1ipQijrAIvjtHoP6ikPCMQDuF324PljUhHLAEdQ904yctoYHkH3Z00xatsnmnh'
