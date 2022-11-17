@@ -10,4 +10,4 @@ class Item(models.Model):
     def __str__(self):
         return self.name
     def return_link(self):
-        return reverse('create-checkout-session', args=[self.pk])
+        return reverse('item', args=[self.pk])
