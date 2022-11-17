@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Item</title>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+
+
+            <h3>Название: {{ item.name }}</h3>
+            <h4>Описание: {{ item.description }}</h4>
+            <h5>Цена: {{ item.price }}</h5>
+
+    <button type="button" id="checkout-button">Checkout</button>
+
+
+{% csrf_token %}
+
+<script type="text/javascript">
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    let stripe = Stripe("{{ public_key }}");
+    let checkoutButton = document.getElementById("checkout-button");
+    checkoutButton.addEventListener("click", function () {
+        fetch("{% url 'create-checkout-session' item.id %}", {
+            method: "GET",
+            headers: {
+                'X-CSRFToken': csrftoken
+            }
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (session) {
+                stripe.redirectToCheckout({ sessionId: session.sessionId })
+
+            })
+            .then(function (result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function (error) {
+                console.error("Error:", error);
+            });
+    });
+</script>
+</body>
+</html>
