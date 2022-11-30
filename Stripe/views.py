@@ -10,7 +10,7 @@ public_key = config.settings.STRIPE_PUBLISHABLE_KEY
 
 
 def get_stripe_session_id(request, id):
-    '''Получение id сессии'''
+
     item = get_object_or_404(Item, id=id)
 
     session = stripe.checkout.Session.create(
@@ -34,7 +34,7 @@ def get_stripe_session_id(request, id):
 
 
 def get_info_about_item(request, id):
-    '''Выдаёт данные продукта, кнопку для оплаты'''
+    '''Выдаёт данные продукта + кнопку для оплаты'''
     item = get_object_or_404(Item, id=id)
     return render(request, 'stripe/checkout.html', {'item': item, 'public_key': public_key})
 
