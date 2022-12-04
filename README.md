@@ -20,7 +20,7 @@
 
 
 
-## Для запуска заполните в settings поля STRIPE_PUBLISHABLE_KEY и STRIPE_SECRET_KEY
+## Для запуска заполните в env поля STRIPE_PUBLISHABLE_KEY и STRIPE_SECRET_KEY
 
 Publishable key:
 https://dashboard.stripe.com/apikeys
